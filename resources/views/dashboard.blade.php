@@ -9,19 +9,25 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                <table class="table">
+                    <table class="table">
                         <thead>
                             <th scope="col"> Aufgabe</th>
-                            <th scope="col"></th>
+                            <th scope="col"> Action</th>
                         </thead>
                         <tbody>
                             @foreach($todos as $todo)
                             @if($todo->completed)
                             <tr>
-                            <td style="text-decoration:line-through">{{$todo->title}} </td>
+                            <td style="text-decoration:line-through">
+                            <del><strong>{{$todo->title}}</strong></del> </br>
+                            <del><small>{{$todo->description}}</small></del>
+                         </td>
                             @else
                             <tr>
-                            <td>{{$todo->title}}</td>
+                            <td>
+                                <strong>{{$todo->title}}</strong> </br>
+                                <small>{{$todo->description}}</small>
+                            </td>
                             @endif
                             <td>
                                     <a href="" class="btn btn-sm btn-success">Bearbeiten</a>
@@ -29,17 +35,9 @@
                                 </td>
                                 </tr>
                                 <tr>
-                                    <td>{{$todo->description}}</td>
+                                     </td>
                                 </tr>
                             @endforeach
-
-                            <tr>
-                                <td>Fix Test Dummy</td>
-                                <td>
-                                    <a href="" class="btn btn-sm btn-success">Bearbeiten</a>
-                                    <a href="" class="btn btn-sm btn-danger">Löschen</a>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
 
