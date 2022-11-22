@@ -9,9 +9,16 @@ class todo extends Model
 {
     use HasFactory;
 
+    protected $fillable =[
+        'title',
+        'description',
+        'completed',
+        'user_id'
+    ];
+
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     protected $guarded =[];

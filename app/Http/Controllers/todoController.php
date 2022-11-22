@@ -3,9 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Todo;
+use Illuminate\Support\Facades\DB;
 
 class todoController extends Controller
 {
+
+    /*public function construct()
+        {
+            $this->middleware('auth');
+        }
+        */
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +22,9 @@ class todoController extends Controller
      */
     public function index()
     {
-        //
+        //$todos = Todo::orderBy('completed')->get();
+        $todos = DB::select('select * from todos');
+        return view('dashboard')->with(['todos' => $todos]);
     }
 
     /**
@@ -23,7 +34,24 @@ class todoController extends Controller
      */
     public function create()
     {
-        //
+        return view('todos.add');
+    }
+
+    public function upload(Request $request)
+    {
+        $data = $request->validate([
+            'title'=> 'required',
+            'description'=> 'required'
+        ]);
+
+        $data['user_id']=auth()->id();
+        $data['completed']=0;
+
+        Todo::create(
+           $data
+        );
+
+        return redirect('/dashboard')->with('success', "TODO created successfully!");
     }
 
     /**
@@ -81,4 +109,5 @@ class todoController extends Controller
     {
         //
     }
+
 }

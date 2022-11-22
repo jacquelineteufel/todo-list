@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Aufgabenliste') }}
         </h2>
     </x-slot>
 
@@ -9,7 +9,42 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <button type="button" class="btn btn-primary">Add Item</button>
+                <table class="table">
+                        <thead>
+                            <th scope="col"> Aufgabe</th>
+                            <th scope="col"></th>
+                        </thead>
+                        <tbody>
+                            @foreach($todos as $todo)
+                            @if($todo->completed)
+                            <tr>
+                            <td style="text-decoration:line-through">{{$todo->title}} </td>
+                            @else
+                            <tr>
+                            <td>{{$todo->title}}</td>
+                            @endif
+                            <td>
+                                    <a href="" class="btn btn-sm btn-success">Bearbeiten</a>
+                                    <a href="" class="btn btn-sm btn-danger">Löschen</a>
+                                </td>
+                                </tr>
+                                <tr>
+                                    <td>{{$todo->description}}</td>
+                                </tr>
+                            @endforeach
+
+                            <tr>
+                                <td>Fix Test Dummy</td>
+                                <td>
+                                    <a href="" class="btn btn-sm btn-success">Bearbeiten</a>
+                                    <a href="" class="btn btn-sm btn-danger">Löschen</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <a href="/create-todo" class="col-6 btn btn-primary"> Aufgabe hinzufügen</a>
+                    
                 </div>
             </div>
         </div>
