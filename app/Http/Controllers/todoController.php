@@ -39,7 +39,7 @@ class todoController extends Controller
     {
         $data = $request->validate([
             'title'=> 'required',
-            'description'=> 'required'
+            'description' => 'nullable|string'
         ]);
 
         $data['user_id']=auth()->id();

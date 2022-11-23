@@ -15,7 +15,7 @@
         <label for="exampleInputEmail1">Titel</label>
         <input type="text" name="title" value="{{$todo->title}}"/> <br>
         <input style="display:none" type="number" name="id" value="{{$todo->id}}">
-        <label for="exampleInputEmail1">Description</label>
+        <label for="exampleInputEmail1">Beschreibung</label>
         <input type="text" name="description" value="{{$todo->description}}"/> <br>
         <input type="checkbox" class="form-check-input" name="completed">
         <label class="form-check-input" type="checkbox" value="1">Bereits erledigt</label> <br>

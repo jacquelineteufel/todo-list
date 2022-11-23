@@ -11,7 +11,7 @@
         @csrf
          <label for="exampleInputEmail1">Titel</label>
          <input type="text" class="form-control" name="title"> <br>
-         <label for="exampleInputPassword1">Description</label>
+         <label for="exampleInputPassword1">Beschreibung</label>
          <input type="text" class="form-control" name="description"> <br>
          <input type="checkbox" class="form-check-input" name="completed">
          <label class="form-check-label" for="exampleCheck1">Bereits erledigt</label> <br>
