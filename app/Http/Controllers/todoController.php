@@ -51,7 +51,7 @@ class todoController extends Controller
            $data
         );
 
-        return redirect('/dashboard')->with('success', "TODO created successfully!");
+        return redirect('/dashboard')->with('success');
     }
 
     /**
@@ -84,7 +84,8 @@ class todoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $todo = Todo::find($id);
+        return view('todos.edit')->with(['id' => $id, 'todo' => $todo]);
     }
 
     /**
@@ -96,7 +97,14 @@ class todoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description'=> 'required'
+        ]);
+        $updateTodo = Todo::find($request->id);
+        $updateTodo->update(['title' => $request->title, 'discription' => $request->description, 'completed' => $request->completed]);
+        return redirect('/dashboard')->with('success');
+        
     }
 
     /**

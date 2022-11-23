@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [todoController::class, 'index'])->name('dashboard');
     Route::get('/create-todo', [todoController::class, 'create']);
     Route::post('/upload', [todoController::class, 'upload']);
+    Route::get('/{id}/edit', [TodoController::class, 'edit']);
+    Route::patch('/update', [TodoController::class, 'update']);
 });
 
 require __DIR__.'/auth.php';

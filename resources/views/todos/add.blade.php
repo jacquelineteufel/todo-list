@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
-   <head></head>
+   <head>
+      <meta charset="utf-8">
+      <title>Aufgabe erstellen</title>
+   </head>
    <body>
+   <body style="text-align:center">
       <h1>Aufgabe erstellen</h1>
       <form action="/upload" method="post">
         @csrf

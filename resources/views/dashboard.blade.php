@@ -30,8 +30,9 @@
                             </td>
                             @endif
                             <td>
-                                    <a href="" class="btn btn-sm btn-success">Bearbeiten</a>
-                                    <a href="" class="btn btn-sm btn-danger">Löschen</a>
+                                <a href="{{asset('/' . $todo->id . '/edit')}}" class="btn btn-sm btn-success">Edit</a>
+                                   <!-- <a href="/edit" class="btn btn-sm btn-success">Bearbeiten</a> -->
+                                    <a href="/delete" class="btn btn-sm btn-danger">Löschen</a>
                                 </td>
                                 </tr>
                                 <tr>
