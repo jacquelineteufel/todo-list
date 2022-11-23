@@ -14,7 +14,7 @@
          <label for="exampleInputPassword1">Description</label>
          <input type="text" class="form-control" name="description">
          <input type="checkbox" class="form-check-input" name="completed">
-         <label class="form-check-label" for="exampleCheck1">Completed?</label>
+         <label class="form-check-label" for="exampleCheck1">Completed</label>
          <input type="submit" value="Hinzufügen" class="btn btn-primary"></input>
       </form>
    </body>
