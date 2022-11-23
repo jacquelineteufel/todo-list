@@ -22,9 +22,7 @@ class todoController extends Controller
      */
     public function index()
     {
-        //$todos = Todo::orderBy('completed')->get();
-        $todos = DB::select('select * from todos');
-        return view('dashboard')->with(['todos' => $todos]);
+        //
     }
 
     /**
@@ -45,7 +43,9 @@ class todoController extends Controller
         ]);
 
         $data['user_id']=auth()->id();
-        $data['completed']=0;
+        if($request->completed == "on"){
+            $data['completed'] = 1;
+        }
 
         Todo::create(
            $data
@@ -62,7 +62,12 @@ class todoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'completed' => 'nullable',
+        ]);
+
     }
 
     /**
@@ -87,6 +92,7 @@ class todoController extends Controller
         $todo = Todo::find($id);
         return view('todos.edit')->with(['id' => $id, 'todo' => $todo]);
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -95,17 +101,19 @@ class todoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request){
         $request->validate([
-            'title' => 'required',
-            'description'=> 'required'
+            'title' => 'required|max:255'
         ]);
         $updateTodo = Todo::find($request->id);
-        $updateTodo->update(['title' => $request->title, 'discription' => $request->description, 'completed' => $request->completed]);
-        return redirect('/dashboard')->with('success');
-        
+        $updateTodo->update(['title' => $request->title, 'description' => $request->description]);
+
+        if($request->completed == "on"){
+            $updateTodo->update(['completed' => 1]);
+        }
+        return redirect('/dashboard')->with('success', "TODO updated successfully!");
     }
+
 
     /**
      * Remove the specified resource from storage.

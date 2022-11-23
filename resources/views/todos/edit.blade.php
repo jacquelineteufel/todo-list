@@ -9,15 +9,16 @@
     <h3>
         <x-alert />
     </h3>
-    <form action="/upload" method="post">
+    <form action="/update" method="post">
         @csrf
+        @method('PUT')
         <label for="exampleInputEmail1">Titel</label>
         <input type="text" name="title" value="{{$todo->title}}"/>
         <input style="display:none" type="number" name="id" value="{{$todo->id}}">
         <label for="exampleInputEmail1">Description</label>
         <input type="text" name="description" value="{{$todo->description}}"/>
-        <label class="form-check-label" for="exampleCheck1">Completed?</label>
-        
+        <input type="checkbox" class="form-check-input" name="completed">
+        <label class="form-check-input" type="checkbox" value="1">Bereits erledigt</label>
         <input type="submit" value="Hinzufügen" class="btn btn-primary"></input>
         
     </form>

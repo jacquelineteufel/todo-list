@@ -22,8 +22,8 @@
 
                             <tr>
                                 <td style="text-decoration:line-through">
-                                <strong>{{$todo->title}}</strong> </br>
-                                <small>{{$todo->description}}</small>
+                                <s><strong>{{$todo->title}}</strong></s> </br>
+                                <s><small>{{$todo->description}}</small></s>
                                 </td>
                             @else
                             <tr>
