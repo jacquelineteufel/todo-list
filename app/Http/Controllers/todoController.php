@@ -22,7 +22,7 @@ class todoController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard', ['todos' => auth()->user()->todo()->get()]);
     }
 
     /**
