@@ -4,16 +4,23 @@
             {{ __('Aufgabenliste') }}
         </h2>
     </x-slot>
-
+    
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
+                <input type="text" id="search-todos" class="form-control" placeholder="Type the title to find the desired todo">
+                <br>
+                <br>
+
                     <table class="table">
                         <thead>
-                            <th scope="col"> Aufgabe</th>
-                            <th scope="col"> Action</th>
+                            <tr>
+                                <th scope="col"> Aufgabe</th>
+                                <th class="col"> Bearbeiten</th>
+                                <th class="col"> Löschen</th>
+                                </tr>
                         </thead>
                         <tbody>
                             @foreach($todos as $todo)
@@ -34,21 +41,24 @@
                             @endif
                                 <td>
                                 <a href="{{asset('/' . $todo->id . '/edit')}}" class="btn btn-sm btn-success">Bearbeiten</a>
+                                </td>
 
+                                <td>
                                 <form action="{{route('destroy', $todo->id)}}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-sm btn-danger"> Löschen </button>
                                 </form>
-
                                 </td>
+
                             </tr>
                             <tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <br>
 
-                    <a href="/create-todo" class="col-6 btn btn-primary"> Aufgabe hinzufügen</a>
+                    <a href="/create-todo" class="col-9 btn btn-primary"> Aufgabe hinzufügen</a>
                     
                 </div>
             </div>
