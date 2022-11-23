@@ -30,9 +30,16 @@
                             </td>
                             @endif
                             <td>
-                                <a href="{{asset('/' . $todo->id . '/edit')}}" class="btn btn-sm btn-success">Edit</a>
+                                <a href="{{asset('/' . $todo->id . '/edit')}}" class="btn btn-sm btn-success">Bearbeiten</a>
                                    <!-- <a href="/edit" class="btn btn-sm btn-success">Bearbeiten</a> -->
-                                    <a href="/delete" class="btn btn-sm btn-danger">Löschen</a>
+
+                                   <form action="{{route('destroy', $todo->id)}}" method="POST">
+                                   @csrf
+                                   @method('delete')
+                                   <button type="submit" class="btn btn-sm btn-danger"> Löschen </button>
+                                    <!--<a href="/{id}/delete" class="btn btn-sm btn-danger">Löschen</a>-->
+                                    </form>
+
                                 </td>
                                 </tr>
                                 <tr>

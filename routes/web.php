@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/upload', [todoController::class, 'upload']);
     Route::get('/{id}/edit', [TodoController::class, 'edit']);
     Route::patch('/update', [TodoController::class, 'update']);
+    Route::delete('/{todo:id}', [TodoController::class, 'destroy'])->name('destroy');
 });
 
 require __DIR__.'/auth.php';
