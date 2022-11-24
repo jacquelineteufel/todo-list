@@ -1,5 +1,35 @@
 <x-app-layout>
     <x-slot name="header">
+        <script type="text/javascript">
+         $('body').on('keyup', '#search-todos', function(){
+            $searchQuest = $(this).val();
+
+          $.ajaxSetup({
+            headers: {                 
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')            
+             }         
+            });
+
+            if($searchQuest){
+                $('.defaultData').hide();
+                $('.searchData').show();
+            }  else{ 
+            $('.defaultData').show();           
+            $('.searchData').hide();        
+             }
+
+          $.ajax ({
+            method: 'get',
+            url: '{{URL::to('search')}}',
+            data: {'search':$searchQuest},
+
+            success: function(data){
+                $('.searchData').html(data);
+            }
+          });
+         });
+        </script>
+
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Aufgabenliste') }}
         </h2>
@@ -22,7 +52,7 @@
                                 <th class="col"> Löschen</th>
                                 </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="defaultData">
                             @foreach($todos as $todo)
 
                             @if($todo->completed)
@@ -54,6 +84,8 @@
                             </tr>
                             <tr>
                             @endforeach
+                        </tbody>
+                        <tbody class="searchData">
                         </tbody>
                     </table>
                     <br>

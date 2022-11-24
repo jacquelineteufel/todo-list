@@ -127,4 +127,55 @@ class todoController extends Controller
         return back();
     }
 
+    public function search(Request $request)
+    {
+        $output="";                                    
+        $todos=Todo::where('title', 'Like', '%'.$request->search. '%')->get();          
+        foreach($todos as $todo) { 
+            if($todo->completed){
+                $output.=
+                '<tr>
+                    <td style="text-decoration:line-through">
+                        <s><strong>'.$todo->title.'</strong></s> </br>
+                        <s><small>'.$todo->description.'</small></s>
+                    </td>
+                    <td>
+                        <a href="'.$todo->id.'/edit" class="btn btn-sm btn-success">Bearbeiten</a>
+                        </td>
+
+                        <td>
+                        <form action="/'.$todo->id.'" method="POST">
+                            '.csrf_field().'
+                            '.method_field('DELETE').'
+                            <button type="submit" class="btn btn-sm btn-danger"> Löschen </button>
+                        </form>
+                    </td>
+                </tr>';
+            }
+         else {
+                $output.=
+                '<tr>
+                    <td>
+                        <strong>'.$todo->title.'</strong> </br>
+                        <small>'.$todo->description.'</small>
+                    </td> 
+                    <td>
+                        <a href="'.$todo->id.'/edit" class="btn btn-sm btn-success">Bearbeiten</a>
+                        </td>
+
+                        <td>
+                        <form action="/'.$todo->id.'" method="POST">
+                            '.csrf_field().'
+                            '.method_field('DELETE').'
+                            <button type="submit" class="btn btn-sm btn-danger"> Löschen </button>
+                        </form>
+                    </td>
+                </tr>';
+              }
+
+        return response($output);
+        }
+    }
+
+
 }

@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js','node_modules/bootstrap/dist/css/bootstrap.min.css'])
     </head>
