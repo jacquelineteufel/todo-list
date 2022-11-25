@@ -40,7 +40,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                <input type="text" id="search-todos" class="form-control" placeholder="Type the title to find the desired todo">
+                <input type="text" id="search-todos" class="form-control" placeholder="Gebe hier den Titel des zu suchenden Todos ein">
                 <br>
                 <br>
 
