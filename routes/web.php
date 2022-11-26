@@ -20,13 +20,7 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-/*Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-*/
-
-
-
+//Alle Actions, deren Route hier definiert sind, können nur nach erdolgreichem Login/Registration ausgeführt werden
 Route::middleware('auth')->group(function () {
     Route::get('/search', [todoController::class, 'search'])->name('search');
 
@@ -41,6 +35,5 @@ Route::middleware('auth')->group(function () {
     Route::put('/update', [todoController::class, 'update']);
     Route::delete('/{todo:id}', [todoController::class, 'destroy'])->name('destroy');
 });
-
 
 require __DIR__.'/auth.php';

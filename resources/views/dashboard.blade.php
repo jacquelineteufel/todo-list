@@ -40,10 +40,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
+                <!--Suchleiste-->
                 <input type="text" id="search-todos" class="form-control" placeholder="Gebe hier den Titel des zu suchenden Todos ein">
                 <br>
                 <br>
 
+                <!--Todo-Liste-->    
                     <table class="table">
                         <thead>
                             <tr>
@@ -55,13 +57,15 @@
                         <tbody class="defaultData">
                             @foreach($todos as $todo)
 
+                            <!--Wenn Todo erledigt wurde, werden Titel und Beschreibung durchgestrichen-->
                             @if($todo->completed)
-
                             <tr>
                                 <td style="text-decoration:line-through">
                                 <s><strong>{{$todo->title}}</strong></s> </br>
                                 <s><small>{{$todo->description}}</small></s>
                                 </td>
+
+                            <!--Wenn Todo nicht erledigt wurde, werden Titel und Beschreibung normal ausgegeben-->
                             @else
                             <tr>
                                 <td>
@@ -69,6 +73,7 @@
                                 <small>{{$todo->description}}</small>
                                 </td>
                             @endif
+                                <!--Berabeiten Button-->
                                 <td>
                                 <a href="{{asset('/' . $todo->id . '/edit')}}" class="btn btn-sm btn-success">Bearbeiten</a>
                                 </td>
@@ -77,6 +82,8 @@
                                 <form action="{{route('destroy', $todo->id)}}" method="POST">
                                 @csrf
                                 @method('delete')
+
+                                <!--Löschen Button-->
                                 <button type="submit" class="btn btn-sm btn-danger"> Löschen </button>
                                 </form>
                                 </td>
@@ -89,7 +96,7 @@
                         </tbody>
                     </table>
                     <br>
-
+                    <!--Aufgabe hinzufügen Button-->
                     <a href="/create-todo" class="col-9 btn btn-primary"> Aufgabe hinzufügen</a>
                     
                 </div>

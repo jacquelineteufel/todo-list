@@ -12,6 +12,7 @@
     <h3>
         <x-alert />
     </h3>
+    <!--Bearbeitungsformular von Todos -->
     <form action="/update" method="post">
         @csrf
         @method('PUT')
@@ -29,7 +30,6 @@
 
         <div class="mb-3"> 
              <input type="checkbox" class="form-check-input" name="completed">Bereits erledigt? </input>
-             <!-- <label class="form-check-input" type="checkbox" value="1">Bereits erledigt</label> <br>-->
         </div>
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
