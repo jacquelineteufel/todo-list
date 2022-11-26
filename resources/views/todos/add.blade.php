@@ -16,17 +16,17 @@
 
         <div class="mb-3">
          <label for="exampleInputEmail1">Titel</label>
-         <input type="text" class="form-control" name="title"> <br>
+         <input type="text" class="form-control" placeholder="z.B. Einkaufen" name="title"> <br>
       </div>
 
       <div class="mb-3">
-         <label for="exampleInputPassword1">Beschreibung</label>
-         <input type="text" class="form-control" name="description"> <br>
+         <label for="exampleInputPassword1">Beschreibung (optional)</label>
+         <input type="text" class="form-control" placeholder="z.B. Bananen, Pfirsiche und Äpfel" name="description"> <br>
       </div> 
 
       <div class="mb-3">
          <input type="checkbox" class="form-check-input" name="completed">
-         <label class="form-check-label" for="exampleCheck1">Bereits erledigt</label> <br>
+         <label class="form-check-label" for="exampleCheck1">Bereits erledigt?</label> <br>
       </div>
 
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">

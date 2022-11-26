@@ -28,12 +28,12 @@
         </div>
 
         <div class="mb-3"> 
-             <input type="checkbox" class="form-check-input" name="completed">Bereits erledigt </input>
+             <input type="checkbox" class="form-check-input" name="completed">Bereits erledigt? </input>
              <!-- <label class="form-check-input" type="checkbox" value="1">Bereits erledigt</label> <br>-->
         </div>
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <input type="submit" value="Hinzufügen" class="btn btn-primary"></input>
+        <input type="submit" value="Änderung speichern" class="btn btn-primary"></input>
         <a href="/dashboard" class="btn btn-sm btn-danger">Zurück </a>
     </div>
 
